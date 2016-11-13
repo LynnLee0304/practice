@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/jquery.mockjax.js"></script>
+    <style>
+        button{
+            background-color: salmon;
+            color:#ffffff;
+            border: transparent;
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            $('#sub').click(function () {
+                var name = $('#name').val();
+                var sex = $('#sex').val();
+                var data = {"name": name, "sex": sex};
+                console.log(data);
+                $.ajax({
+                    type: 'POST',
+                    url: 'api/comment/submit',
+                    data: JSON.stringify(data),
+                    contentType: "application/json",
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        if (data.code != 1) {
+                            //console.log(data.msg);
+                            alert(data.msg);
+                        } else {
+                            alert('短信发送成功，我们将尽快联系您');
+
+                        }
+
+                    }
+                });
+
+                $.mockjax({		//  固定  必要
+                    url: 'api/comment/submit',   // 必要 提交到后台的URL，要与ajax中的url一致
+                    status: 200,   //响应状态码 可选
+                    responseTime: 1000,   // 响应时间 可选
+                    responseText: {    // 固定  必要  {} 花括号内是后台返回的json数据格式
+                        "code": 1,
+                        "msg": 'success'
+                    }
+                })
+
+            })
+        }
+
+
+    </script>
+</head>
+<body>
+<input id="name" type="text" autofocus placeholder="姓名"/>
+<input id="sex" type="text" autofocus placeholder="性别"/>
+<button id="sub">确定</button>
+</body>
+</html>

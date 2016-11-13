@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            height:2000px;
+        }
+        #box{
+            width: 300px;
+            height:300px;
+            position: absolute;
+            background-color: #8c8c8c;
+            display: none;
+        }
+
+
+    </style>
+    <script>
+
+        //窗口加载完毕后执行
+        window.onload = function(){
+            var oBtn = document.getElementById('btn');
+            oBtn.onclick = function(){
+                pop();
+            };
+            //pop();
+        };
+
+        //滚动条发生变化时执行
+        window.onscroll = function(){
+            pop();
+        };
+
+        //窗口大小改变时执行
+        window.onresize = function(){
+            pop();
+        };
+
+        //弹窗事件
+        function pop (){
+            var scrollTop = document.body.scrollTop;//滚动条到顶部
+            var oBox = document.getElementById('box');
+            oBox.style.display = 'block';
+
+            oBox.style.top=document.documentElement.clientHeight/2-oBox.offsetHeight/2+scrollTop+'px';
+            oBox.style.left=document.documentElement.clientWidth/2-oBox.offsetWidth/2+'px';
+        }
+
+
+    </script>
+</head>
+<body>
+<button id="btn">点击</button>
+<div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+html,body{
+    height: 100%;
+}
+#list{
+    position: absolute;
+    right:440px;
+    background-color: silver;
+    display: inline-block;
+    width:200px;
+}
+.lis ul{
+    display: none;
+
+}
+.active{
+    background-color: yellow;
+}

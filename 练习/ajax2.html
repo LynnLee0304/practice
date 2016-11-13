@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.mockjax.js"></script>
+
+</head>
+<body>
+<script>
+    window.onload = function(){
+        var oBtn = document.getElementById('btn');
+
+       // 1，在html页面中引入 mockjax.js 文件
+       // 2，在js中写代码：
+
+$.mockjax({		//  固定  必要
+    url : 'api/comment/submit',   // 必要 提交到后台的URL，要与ajax中的url一致
+    status: 200,   //响应状态码 可选
+    responseTime: 1000,   // 响应时间 可选
+    responseText:{    // 固定  必要  {} 花括号内是后台返回的json数据格式
+        "code": 1,
+        "msg": 'success'
+    }
+})
+
+
+    };
+</script>
+<button id="btn">按钮</button>
+</body>
+</html>

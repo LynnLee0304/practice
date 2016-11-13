@@ -1,0 +1,14 @@
+*{
+    margin:0;
+    padding:0;
+}
+#pop{
+    width:100px;
+    height:30px;
+    background-color: palevioletred;
+    border-radius: 8px;
+    display: block;
+    position: fixed;
+    top:100px;
+    left:0;
+}

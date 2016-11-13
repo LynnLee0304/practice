@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            height:2000px;
+        }
+        div{
+            width:200px;
+            height:200px;
+            background-color: salmon;
+            position:absolute;
+        }
+        span{
+            position: absolute;
+            top:0;
+            right:0;
+        }
+    </style>
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <script>
+       window.onload = function(){
+
+            //点击按钮创建元素
+            $('#btn').click(function(){
+
+                var oBox = $('<div><span>X</span></div>');
+                $('body').append(oBox);
+
+                oBox.css('left',($(window).width()-oBox.outerWidth())/2);
+                oBox.css('top',($(window).height()-oBox.outerHeight())/2);
+                close();
+
+           $(window).on('resize scroll', function(){
+               oBox.css('left',($(window).width()-oBox.outerWidth())/2+$(window).scrollLeft());
+               oBox.css('top',($(window).height()-oBox.outerHeight())/2+$(window).scrollTop());
+               close();
+           });
+
+                //关闭按钮
+                function close(){
+                    $('span').click(function(){
+                        oBox.css('display','none');
+                    });
+                }
+            });
+
+       };
+    </script>
+</head>
+<body>
+<button id="btn">点击</button>
+</body>
+</html>

@@ -1,0 +1,13 @@
+li{
+    list-style: none;
+    background-color:lightcoral;
+    width:200px;
+    height:400px;
+    float: right;
+    margin:20px;
+}
+div{
+    width:160px;
+    height:200px;
+    background-color:cadetblue;
+}

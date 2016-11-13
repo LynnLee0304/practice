@@ -1,0 +1,20 @@
+*{
+    margin:0;
+    padding:0;
+}
+html,body{
+    height:100%;
+}
+.left{
+    width:30%;
+    height:100%;
+    background-color: #FFAAAA;
+}
+.right{
+    width:70%;
+    height:100%;
+    background-color: #0D3349;
+    position: absolute;
+    top:0;
+    right:0;
+}

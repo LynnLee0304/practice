@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #img{
+            width:600px;
+            height:400px;
+        }
+        ul{
+
+        }
+        ul li{
+            margin-left:10px;
+            float: left;
+        }
+        .active{
+            color:red;
+        }
+
+    </style>
+    <script>
+       window.onload = function(){
+
+           var oImg = document.getElementById('img');
+           var oList = document.getElementById('list');
+           var aLi = oList.getElementsByTagName('li');
+
+           var arr = ['images/1.jpg','images/2.jpeg','images/3.jpg','images/4.jpeg'];
+           var num = 0;
+           var timer = null;
+
+           //【根据图片数量添加li】
+           for(var i=0;i<arr.length;i++){
+               oList.innerHTML += '<li></li>';
+           }
+
+
+           //隔2秒钟自动切换图片
+           function autoPlay() {
+               timer = setInterval(function () {
+                   num++;
+                   num %= arr.length;
+                   fnTab();
+               }, 2000);
+           }//setTimeout( autoPlay, 2000 );
+
+           //鼠标移入图片停止切换，移开开始切换
+           oImg.onmouseover = function (){
+               clearTimeout( timer );
+           };
+           oImg.onmouseout = autoPlay;
+
+           //li的颜色随着图片位置变化
+           function fnTab(){
+               oImg.src = arr[num];
+               for( var i=0; i<aLi.length; i++ ){
+                   aLi[i].className = '';
+               }
+               aLi[num].className = 'active';
+           }fnTab();
+
+           //核心切换代码
+           for( var i=0; i<aLi.length; i++ ){
+               aLi[i].index = i;			// 索引值
+               aLi[i].onclick = function (){
+                   num = this.index;
+                   fnTab();
+               };
+           }
+       }
+
+    </script>
+</head>
+<body>
+
+<img id="img" src="images/1.jpg"/>
+<ul id="list"></ul>
+</body>
+</html>
